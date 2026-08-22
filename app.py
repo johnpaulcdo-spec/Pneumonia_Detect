@@ -1,4 +1,3 @@
-
 import streamlit as st
 import numpy as np
 from PIL import Image
@@ -13,19 +12,13 @@ def load_pneumonia_model():
 
 def preprocess_uploaded_image(uploaded_file, img_size=224):
     img = Image.open(uploaded_file).convert("L")
+    display_img = img.copy()
     img = img.resize((img_size, img_size))
     img_array = np.array(img).astype("float32") / 255.0
-
-    # Expand grayscale to one channel
     img_array = np.expand_dims(img_array, axis=-1)
-
-    # Repeat to three channels for VGG16 input
     img_array = np.repeat(img_array, 3, axis=-1)
-
-    # Add batch dimension
     img_array = np.expand_dims(img_array, axis=0)
-
-    return img_array, img
+    return img_array, display_img
 
 st.set_page_config(page_title="Pneumonia Detection App", layout="centered")
 

@@ -8,6 +8,7 @@ This project predicts whether a chest X-ray image is pneumonia-positive or pneum
 ## Deployment Files
 - app.py
 - requirements.txt
+- runtime.txt
 - final_pneumonia_model.keras
 
 ## Deployment Platform
