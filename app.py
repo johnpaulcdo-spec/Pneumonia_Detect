@@ -45,7 +45,7 @@ if uploaded_file is not None:
 
         st.image(display_img, caption="Uploaded Chest X-ray")
 
-        pred_prob = float(model.predict(processed_img)[0][0])
+        pred_prob = float(model.predict(processed_img, verbose=0)[0][0])
         pred_label = 1 if pred_prob > 0.5 else 0
 
         if pred_label == 1:
